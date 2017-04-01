@@ -14,7 +14,7 @@ public class WordCounter {
 	private final State E = new EState();
 	private final State HYPHEN = new HyphenState();
 	private final State NON_WORD = new NonWordState();
-	private State state = START;
+	private State state;
 	private int syllableCount;
 
 	public int countSyllables(String word) {
@@ -22,10 +22,8 @@ public class WordCounter {
 		word = word.trim().toLowerCase() + " ";
 		syllableCount = 0;
 		for (int index = 0; index < word.length(); index++) {
-			if (state == NON_WORD) {
-				System.out.println("AT NON WORD");
+			if (state == NON_WORD)
 				return 0;
-			}
 			char c = word.charAt(index);
 			state.handleChar(c);
 		}

@@ -1,5 +1,11 @@
 package syllablecounter;
 
+/**
+ * State interface of the word counter.
+ * 
+ * @author Kongpon Charanwattanakit
+ *
+ */
 public interface State {
 	/** Do nothing. */
 	public default void enterState() {

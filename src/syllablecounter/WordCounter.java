@@ -1,11 +1,11 @@
 package syllablecounter;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
+/**
+ * WordCounter class for counting syllable in a word using State Design Pattern.
+ * 
+ * @author Kongpon Charanwattanakit
+ *
+ */
 public class WordCounter {
 	private final State START = new StartState();
 	private final State CONSONANT = new ConsonantState();
@@ -17,6 +17,13 @@ public class WordCounter {
 	private State state;
 	private int syllableCount;
 
+	/**
+	 * Return total syllables counted in the word.
+	 * 
+	 * @param word
+	 *            is the word to count syllables
+	 * @return number of syllables in the word
+	 */
 	public int countSyllables(String word) {
 		this.state = START;
 		word = word.trim().toLowerCase() + " ";
@@ -30,35 +37,90 @@ public class WordCounter {
 		return syllableCount;
 	}
 
+	/**
+	 * Set the state of this WordCunter.
+	 * 
+	 * @param state
+	 *            is the state to be set
+	 */
 	public void setState(State state) {
 		this.state = state;
 		state.enterState();
 	}
 
+	/**
+	 * Check if the character is a vowel (a, e, i, o, u) of letter Y.
+	 * 
+	 * @param c
+	 *            is the character to be checked
+	 * @return true if it is a vowel or y, false otherwise
+	 */
 	private boolean isVowelOrY(char c) {
 		return String.valueOf(c).matches("[aeiouy]");
 	}
 
+	/**
+	 * Check if the character is a vowel (a, e, i, o, u).
+	 * 
+	 * @param c
+	 *            is the character to be checked
+	 * @return true if it is a vowel, false otherwise
+	 */
 	private boolean isVowel(char c) {
 		return String.valueOf(c).matches("[aeiou]");
 	}
 
+	/**
+	 * Check if the character is a consonant (non-vowel).
+	 * 
+	 * @param c
+	 *            is the character to be checked
+	 * @return true if it is a consonant, false otherwise
+	 */
 	private boolean isConsonant(char c) {
 		return String.valueOf(c).matches("[a-z&&[^aeiou]]");
 	}
 
+	/**
+	 * Check if the character is a hyphen or dash.
+	 * 
+	 * @param c
+	 *            is the character to be checked
+	 * @return true if it is a hyphen, false otherwise
+	 */
 	private boolean isHyphen(char c) {
 		return c == '-';
 	}
 
+	/**
+	 * Check if the character is a non letter (special character). Excluding
+	 * hyphen and apostrophe.
+	 * 
+	 * @param c
+	 *            is the character to be checked
+	 * @return true if it is not a letter, false otherwise
+	 */
 	private boolean isNonLetter(char c) {
 		return String.valueOf(c).matches("[^a-z'-]");
 	}
 
+	/**
+	 * Check if the character is an ending charanter (whitespace).
+	 * 
+	 * @param c
+	 *            is the character to be checked
+	 * @return true if it is a whitespace, false otherwise
+	 */
 	private boolean isEnding(char c) {
 		return c == ' ';
 	}
 
+	/**
+	 * Starting state.
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 *
+	 */
 	class StartState implements State {
 
 		@Override
@@ -73,6 +135,12 @@ public class WordCounter {
 		}
 	}
 
+	/**
+	 * Consonant letter state.
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 *
+	 */
 	class ConsonantState implements State {
 
 		@Override
@@ -89,7 +157,11 @@ public class WordCounter {
 		}
 	}
 
-	/* Similar to SingleVowelState but with last E check */
+	/**
+	 * Letter E state. Similar to SingleVowelState but with last E check
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 **/
 	class EState implements State {
 
 		@Override
@@ -113,6 +185,12 @@ public class WordCounter {
 
 	}
 
+	/**
+	 * Single vowel state.
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 *
+	 */
 	class SingleVowelState implements State {
 
 		@Override
@@ -133,6 +211,12 @@ public class WordCounter {
 		}
 	}
 
+	/**
+	 * Multiple vowel state.
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 *
+	 */
 	class MultiVowelState implements State {
 
 		@Override
@@ -151,6 +235,12 @@ public class WordCounter {
 		}
 	}
 
+	/**
+	 * Hyphen or dash state.
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 *
+	 */
 	class HyphenState implements State {
 
 		@Override
@@ -167,6 +257,12 @@ public class WordCounter {
 		}
 	}
 
+	/**
+	 * Not a word state.
+	 * 
+	 * @author Kongpon Charanwattanakit
+	 *
+	 */
 	class NonWordState implements State {
 
 		@Override

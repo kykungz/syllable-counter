@@ -6,13 +6,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
+/**
+ * Main class.
+ * 
+ * @author Kongpon Charanwattanakit
+ *
+ */
 public class Main {
+	public static final String DICT_URL = "https://se.cpe.ku.ac.th/dictionary.txt";
+	public static final double NANO = 1E-9;
 
 	public static void main(String[] args) throws IOException {
 		WordCounter counter = new WordCounter();
 		// System.out.println(counter.countSyllables("home-brew"));
-		final String DICT_URL = "https://se.cpe.ku.ac.th/dictionary.txt";
-		final double NANO = Math.pow(10, -9);
 		URL url = new URL(DICT_URL);
 		InputStream input = url.openStream();
 		BufferedReader reader = new BufferedReader(new InputStreamReader(input));

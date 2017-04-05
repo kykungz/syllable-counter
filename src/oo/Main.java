@@ -1,10 +1,12 @@
-package syllablecounter;
+package oo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+
+import syllablecounter.SimpleSyllableCounter;
 
 /**
  * Main class.
@@ -18,6 +20,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		WordCounter counter = new WordCounter();
+		// SimpleSyllableCounter counter = new SimpleSyllableCounter();
 		// System.out.println(counter.countSyllables("home-brew"));
 		URL url = new URL(DICT_URL);
 		InputStream input = url.openStream();

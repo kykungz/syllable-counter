@@ -1,7 +1,8 @@
-package syllablecounter;
+package oo;
 
 /**
- * WordCounter class for counting syllable in a word using State Design Pattern.
+ * WordCounter class for counting syllable in a word using State Design Pattern
+ * (Object-Oriented).
  * 
  * @author Kongpon Charanwattanakit
  *
@@ -38,7 +39,7 @@ public class WordCounter {
 	}
 
 	/**
-	 * Set the state of this WordCunter.
+	 * Set the state of this WordCounter.
 	 * 
 	 * @param state
 	 *            is the state to be set

@@ -1,4 +1,4 @@
-package syllablecounter;
+package oo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
+import syllablecounter.SimpleSyllableCounter;
 
 /**
  * Some words with known syllable count, to check your countSyllables method. It
@@ -88,10 +90,11 @@ public class WordCounterTest {
 		}
 
 		WordCounter counter = new WordCounter();
+		// SimpleSyllableCounter counter = new SimpleSyllableCounter();
 		int correct = 0;
 		int incorrect = 0;
 		for (String word : words.keySet()) {
-			System.out.printf("%-24s\n", word);
+			System.out.printf("%-24s", word);
 			int expect = words.get(word);
 			int actual = counter.countSyllables(word);
 			System.out.print(actual);

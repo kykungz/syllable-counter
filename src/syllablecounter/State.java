@@ -1,21 +1,5 @@
 package syllablecounter;
 
-/**
- * State interface of the word counter.
- * 
- * @author Kongpon Charanwattanakit
- *
- */
-public interface State {
-	/** Do nothing. */
-	public default void enterState() {
-	};
-
-	/**
-	 * Handle a character to configure the state.
-	 * 
-	 * @param c
-	 *            is a character to determine
-	 */
-	public void handleChar(char c);
+public enum State {
+	START, CONSONANT, SINGLE_VOWEL, MULTI_VOWEL, HYPHEN, E;
 }
